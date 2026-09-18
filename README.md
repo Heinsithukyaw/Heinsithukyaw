@@ -115,19 +115,29 @@
       <p>
         Hi — I'm <b>T@ungoodev</b>, a software engineer who builds <b>AI agent systems</b> and the
         product surfaces around them. My work sits where <i>agentic automation</i> meets
-        <i>real, shipped software</i>: multi-agent orchestration, tool/MCP plumbing, workflow engines,
-        and the full-stack apps that make them usable.
+        <i>real, shipped software</i>: multi-agent orchestration, tool and MCP plumbing, workflow
+        engines, and the full-stack apps that make them usable.
       </p>
       <p>
         I work end-to-end — data model and API on one side, interface on the other. Day to day that
-        means <b>TypeScript</b> and <b>Python</b> for products and services, <b>Go</b> for
-        performance-sensitive services, and <b>PostgreSQL</b> + <b>Docker</b> underneath.
-        I care about systems that stay debuggable after month three, not just demos that work once.
+        is <b>TypeScript</b> and <b>Python</b>, with <b>PostgreSQL</b>, <b>Redis</b> and
+        <b>Docker</b> underneath. I care about systems that stay debuggable after month three, not
+        demos that work once.
       </p>
       <p>
-        Currently building: <b>Callme.ai</b> (voice AI calling), <b>DailyNews</b> (community-ranked
-        news), <b>PIG</b> (private investment gateway), <b>AgentOS</b> (agent orchestration) and
-        <b>Veridra</b> (a writer's studio).
+        <b>Ominibridge</b> is the project I have gone deepest on — a dynamic integration server that
+        takes a single API configuration and exposes it four ways at once: <b>MCP tools</b>,
+        <b>A2A agent skills</b>, a live <b>OpenAPI</b> catalog, and a versioned <b>REST gateway</b>.
+        All four run through one eleven-stage pipeline — caching, concurrency limits, SSRF guards,
+        rate limiting, circuit breaking, idempotency, retry — and finish with PII masking and an
+        audit trail. On the backend it speaks REST, SOAP, GraphQL, gRPC, SQL and JSON-RPC, and
+        credentials stay as environment references rather than sitting in config files.
+      </p>
+      <p>
+        Currently building: <b>Ominibridge</b> (agent integration infrastructure), <b>Callme.ai</b>
+        (Burmese-speaking voice agents), <b>DailyNews</b> (RSS ingestion to ranked feeds),
+        <b>PIG</b> (private investment gateway), <b>AgentOS</b> (agent orchestration) and
+        <b>Veridra</b> (governed writing — briefs into reviewable artifacts).
       </p>
     </td>
   </tr>
@@ -144,7 +154,7 @@
 
 <div align="center">
   <a href="https://github.com/Heinsithukyaw?tab=repositories">
-    <img width="100%" src="./assets/projects.svg" alt="Featured projects: Callme.ai, DailyNews, PIG, AgentOS" />
+    <img width="100%" src="./assets/projects.svg" alt="Featured projects: Ominibridge, Callme.ai, DailyNews, PIG, AgentOS, Veridra" />
   </a>
 </div>
 
