@@ -173,6 +173,8 @@ Building in public · agent architecture · workflow automation · trading &amp;
 
 <!-- ─────────────  FOOTER  ───────────── -->
 
+<!-- The snake lives on the `output` branch, built by .github/workflows/snake.yml.
+     It 404s until that workflow has run once (it fires on the first push to main). -->
 <div align="center">
   <img src="https://raw.githubusercontent.com/Heinsithukyaw/Heinsithukyaw/output/github-contribution-grid-snake-dark.svg" alt="Contribution snake" width="100%" />
 </div>
