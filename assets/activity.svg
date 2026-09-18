@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="250"
+     viewBox="0 0 880 250" role="img" aria-label="Contribution graph for Heinsithukyaw">
+  <defs>
+    <linearGradient id="areaFill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5AA8DD" stop-opacity="0.55"/>
+      <stop offset="60%" stop-color="#2F7AB8" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#2F7AB8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="lineStroke" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#2F7AB8"/>
+      <stop offset="50%" stop-color="#9FD4F5"/>
+      <stop offset="100%" stop-color="#5AA8DD"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0.5" y="0.5" width="879" height="249" rx="12"
+      fill="#0A1929" stroke="#1D4F7D" stroke-opacity="0.85"/>
+  
+  <text x="26" y="38" font-size="14.5" font-weight="700" fill="#5AA8DD"
+        font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.3">Contribution Graph</text>
+  <rect x="26" y="50" width="54" height="2" rx="1" fill="#2F7AB8"/>
+  <rect x="80" y="50" width="774" height="1" fill="#14345A" opacity="0.7"/>
+
+  <text x="854" y="38" font-size="12" fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif"
+        text-anchor="end">2026 ·
+    <tspan fill="#5AA8DD" font-weight="700">251</tspan>
+    <tspan fill="#7A93AB"> contributions</tspan></text>
+
+  
+    <line x1="46" y1="74.0" x2="850" y2="74.0"
+          stroke="#14345A" stroke-opacity="0.45"/>
+    <text x="36" y="78.0" font-size="10" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">80</text>
+    <line x1="46" y1="107.5" x2="850" y2="107.5"
+          stroke="#14345A" stroke-opacity="0.45"/>
+    <text x="36" y="111.5" font-size="10" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">60</text>
+    <line x1="46" y1="141.0" x2="850" y2="141.0"
+          stroke="#14345A" stroke-opacity="0.45"/>
+    <text x="36" y="145.0" font-size="10" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">40</text>
+    <line x1="46" y1="174.5" x2="850" y2="174.5"
+          stroke="#14345A" stroke-opacity="0.45"/>
+    <text x="36" y="178.5" font-size="10" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">20</text>
+    <line x1="46" y1="208.0" x2="850" y2="208.0"
+          stroke="#14345A" stroke-opacity="0.9"/>
+    <text x="36" y="212.0" font-size="10" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">0</text>
+  <path d="M46.0,208.0 L49.1,208.0 L52.2,208.0 L55.2,208.0 L58.3,208.0 L61.4,208.0 L64.5,208.0 L67.6,208.0 L70.6,208.0 L73.7,208.0 L76.8,208.0 L79.9,208.0 L83.0,208.0 L86.0,208.0 L89.1,208.0 L92.2,208.0 L95.3,208.0 L98.4,208.0 L101.4,208.0 L104.5,208.0 L107.6,208.0 L110.7,204.7 L113.8,206.3 L116.9,203.0 L119.9,208.0 L123.0,206.3 L126.1,208.0 L129.2,208.0 L132.3,208.0 L135.3,208.0 L138.4,208.0 L141.5,208.0 L144.6,208.0 L147.7,208.0 L150.7,208.0 L153.8,208.0 L156.9,208.0 L160.0,208.0 L163.1,208.0 L166.1,208.0 L169.2,208.0 L172.3,208.0 L175.4,208.0 L178.5,208.0 L181.5,208.0 L184.6,208.0 L187.7,208.0 L190.8,206.3 L193.9,208.0 L196.9,208.0 L200.0,208.0 L203.1,208.0 L206.2,208.0 L209.3,208.0 L212.3,208.0 L215.4,208.0 L218.5,208.0 L221.6,208.0 L224.7,208.0 L227.7,208.0 L230.8,208.0 L233.9,208.0 L237.0,208.0 L240.1,208.0 L243.1,208.0 L246.2,208.0 L249.3,208.0 L252.4,208.0 L255.5,208.0 L258.6,208.0 L261.6,208.0 L264.7,208.0 L267.8,208.0 L270.9,208.0 L274.0,208.0 L277.0,208.0 L280.1,208.0 L283.2,208.0 L286.3,208.0 L289.4,208.0 L292.4,208.0 L295.5,208.0 L298.6,208.0 L301.7,208.0 L304.8,208.0 L307.8,208.0 L310.9,208.0 L314.0,208.0 L317.1,208.0 L320.2,208.0 L323.2,208.0 L326.3,208.0 L329.4,208.0 L332.5,208.0 L335.6,208.0 L338.6,208.0 L341.7,208.0 L344.8,208.0 L347.9,208.0 L351.0,208.0 L354.0,208.0 L357.1,208.0 L360.2,208.0 L363.3,208.0 L366.4,208.0 L369.4,208.0 L372.5,208.0 L375.6,208.0 L378.7,208.0 L381.8,208.0 L384.9,208.0 L387.9,208.0 L391.0,208.0 L394.1,208.0 L397.2,208.0 L400.3,208.0 L403.3,208.0 L406.4,208.0 L409.5,208.0 L412.6,208.0 L415.7,208.0 L418.7,208.0 L421.8,208.0 L424.9,208.0 L428.0,208.0 L431.1,208.0 L434.1,208.0 L437.2,208.0 L440.3,208.0 L443.4,208.0 L446.5,208.0 L449.5,208.0 L452.6,208.0 L455.7,208.0 L458.8,208.0 L461.9,208.0 L464.9,208.0 L468.0,208.0 L471.1,208.0 L474.2,208.0 L477.3,208.0 L480.3,208.0 L483.4,208.0 L486.5,208.0 L489.6,208.0 L492.7,208.0 L495.7,208.0 L498.8,208.0 L501.9,208.0 L505.0,208.0 L508.1,208.0 L511.1,208.0 L514.2,208.0 L517.3,208.0 L520.4,208.0 L523.5,208.0 L526.6,208.0 L529.6,208.0 L532.7,208.0 L535.8,208.0 L538.9,208.0 L542.0,208.0 L545.0,208.0 L548.1,208.0 L551.2,208.0 L554.3,208.0 L557.4,208.0 L560.4,208.0 L563.5,208.0 L566.6,208.0 L569.7,208.0 L572.8,208.0 L575.8,208.0 L578.9,208.0 L582.0,208.0 L585.1,208.0 L588.2,208.0 L591.2,208.0 L594.3,208.0 L597.4,208.0 L600.5,208.0 L603.6,208.0 L606.6,208.0 L609.7,208.0 L612.8,206.3 L615.9,208.0 L619.0,208.0 L622.0,208.0 L625.1,208.0 L628.2,208.0 L631.3,208.0 L634.4,208.0 L637.4,208.0 L640.5,208.0 L643.6,208.0 L646.7,208.0 L649.8,208.0 L652.9,208.0 L655.9,208.0 L659.0,208.0 L662.1,208.0 L665.2,208.0 L668.3,208.0 L671.3,208.0 L674.4,208.0 L677.5,208.0 L680.6,208.0 L683.7,208.0 L686.7,208.0 L689.8,208.0 L692.9,208.0 L696.0,208.0 L699.1,208.0 L702.1,208.0 L705.2,208.0 L708.3,208.0 L711.4,208.0 L714.5,208.0 L717.5,208.0 L720.6,208.0 L723.7,208.0 L726.8,208.0 L729.9,208.0 L732.9,208.0 L736.0,208.0 L739.1,208.0 L742.2,208.0 L745.3,208.0 L748.3,194.6 L751.4,203.0 L754.5,204.7 L757.6,203.0 L760.7,208.0 L763.7,208.0 L766.8,119.2 L769.9,151.1 L773.0,196.3 L776.1,196.3 L779.1,181.2 L782.2,208.0 L785.3,151.1 L788.4,167.8 L791.5,179.5 L794.6,208.0 L797.6,208.0 L800.7,204.7 L803.8,187.9 L806.9,208.0 L810.0,208.0 L813.0,208.0 L816.1,208.0 L819.2,208.0 L822.3,204.7 L825.4,197.9 L828.4,206.3 L831.5,208.0 L834.6,208.0 L837.7,208.0 L840.8,208.0 L843.8,203.0 L846.9,204.7 L850.0,197.9 L850.0,208.0 L46,208.0 Z" fill="url(#areaFill)"/>
+  <path d="M46.0,208.0 L49.1,208.0 L52.2,208.0 L55.2,208.0 L58.3,208.0 L61.4,208.0 L64.5,208.0 L67.6,208.0 L70.6,208.0 L73.7,208.0 L76.8,208.0 L79.9,208.0 L83.0,208.0 L86.0,208.0 L89.1,208.0 L92.2,208.0 L95.3,208.0 L98.4,208.0 L101.4,208.0 L104.5,208.0 L107.6,208.0 L110.7,204.7 L113.8,206.3 L116.9,203.0 L119.9,208.0 L123.0,206.3 L126.1,208.0 L129.2,208.0 L132.3,208.0 L135.3,208.0 L138.4,208.0 L141.5,208.0 L144.6,208.0 L147.7,208.0 L150.7,208.0 L153.8,208.0 L156.9,208.0 L160.0,208.0 L163.1,208.0 L166.1,208.0 L169.2,208.0 L172.3,208.0 L175.4,208.0 L178.5,208.0 L181.5,208.0 L184.6,208.0 L187.7,208.0 L190.8,206.3 L193.9,208.0 L196.9,208.0 L200.0,208.0 L203.1,208.0 L206.2,208.0 L209.3,208.0 L212.3,208.0 L215.4,208.0 L218.5,208.0 L221.6,208.0 L224.7,208.0 L227.7,208.0 L230.8,208.0 L233.9,208.0 L237.0,208.0 L240.1,208.0 L243.1,208.0 L246.2,208.0 L249.3,208.0 L252.4,208.0 L255.5,208.0 L258.6,208.0 L261.6,208.0 L264.7,208.0 L267.8,208.0 L270.9,208.0 L274.0,208.0 L277.0,208.0 L280.1,208.0 L283.2,208.0 L286.3,208.0 L289.4,208.0 L292.4,208.0 L295.5,208.0 L298.6,208.0 L301.7,208.0 L304.8,208.0 L307.8,208.0 L310.9,208.0 L314.0,208.0 L317.1,208.0 L320.2,208.0 L323.2,208.0 L326.3,208.0 L329.4,208.0 L332.5,208.0 L335.6,208.0 L338.6,208.0 L341.7,208.0 L344.8,208.0 L347.9,208.0 L351.0,208.0 L354.0,208.0 L357.1,208.0 L360.2,208.0 L363.3,208.0 L366.4,208.0 L369.4,208.0 L372.5,208.0 L375.6,208.0 L378.7,208.0 L381.8,208.0 L384.9,208.0 L387.9,208.0 L391.0,208.0 L394.1,208.0 L397.2,208.0 L400.3,208.0 L403.3,208.0 L406.4,208.0 L409.5,208.0 L412.6,208.0 L415.7,208.0 L418.7,208.0 L421.8,208.0 L424.9,208.0 L428.0,208.0 L431.1,208.0 L434.1,208.0 L437.2,208.0 L440.3,208.0 L443.4,208.0 L446.5,208.0 L449.5,208.0 L452.6,208.0 L455.7,208.0 L458.8,208.0 L461.9,208.0 L464.9,208.0 L468.0,208.0 L471.1,208.0 L474.2,208.0 L477.3,208.0 L480.3,208.0 L483.4,208.0 L486.5,208.0 L489.6,208.0 L492.7,208.0 L495.7,208.0 L498.8,208.0 L501.9,208.0 L505.0,208.0 L508.1,208.0 L511.1,208.0 L514.2,208.0 L517.3,208.0 L520.4,208.0 L523.5,208.0 L526.6,208.0 L529.6,208.0 L532.7,208.0 L535.8,208.0 L538.9,208.0 L542.0,208.0 L545.0,208.0 L548.1,208.0 L551.2,208.0 L554.3,208.0 L557.4,208.0 L560.4,208.0 L563.5,208.0 L566.6,208.0 L569.7,208.0 L572.8,208.0 L575.8,208.0 L578.9,208.0 L582.0,208.0 L585.1,208.0 L588.2,208.0 L591.2,208.0 L594.3,208.0 L597.4,208.0 L600.5,208.0 L603.6,208.0 L606.6,208.0 L609.7,208.0 L612.8,206.3 L615.9,208.0 L619.0,208.0 L622.0,208.0 L625.1,208.0 L628.2,208.0 L631.3,208.0 L634.4,208.0 L637.4,208.0 L640.5,208.0 L643.6,208.0 L646.7,208.0 L649.8,208.0 L652.9,208.0 L655.9,208.0 L659.0,208.0 L662.1,208.0 L665.2,208.0 L668.3,208.0 L671.3,208.0 L674.4,208.0 L677.5,208.0 L680.6,208.0 L683.7,208.0 L686.7,208.0 L689.8,208.0 L692.9,208.0 L696.0,208.0 L699.1,208.0 L702.1,208.0 L705.2,208.0 L708.3,208.0 L711.4,208.0 L714.5,208.0 L717.5,208.0 L720.6,208.0 L723.7,208.0 L726.8,208.0 L729.9,208.0 L732.9,208.0 L736.0,208.0 L739.1,208.0 L742.2,208.0 L745.3,208.0 L748.3,194.6 L751.4,203.0 L754.5,204.7 L757.6,203.0 L760.7,208.0 L763.7,208.0 L766.8,119.2 L769.9,151.1 L773.0,196.3 L776.1,196.3 L779.1,181.2 L782.2,208.0 L785.3,151.1 L788.4,167.8 L791.5,179.5 L794.6,208.0 L797.6,208.0 L800.7,204.7 L803.8,187.9 L806.9,208.0 L810.0,208.0 L813.0,208.0 L816.1,208.0 L819.2,208.0 L822.3,204.7 L825.4,197.9 L828.4,206.3 L831.5,208.0 L834.6,208.0 L837.7,208.0 L840.8,208.0 L843.8,203.0 L846.9,204.7 L850.0,197.9" fill="none" stroke="url(#lineStroke)" stroke-width="2"
+        stroke-linejoin="round" stroke-linecap="round"/>
+  <text x="46.0" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Jan</text><text x="141.5" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Feb</text><text x="227.7" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Mar</text><text x="323.2" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Apr</text><text x="415.7" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">May</text><text x="511.1" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Jun</text><text x="603.6" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Jul</text><text x="699.1" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Aug</text><text x="794.6" y="230" font-size="10.5"
+      fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Sep</text>
+
+  <text x="46" y="240" font-size="10" fill="#7A93AB" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">
+    <tspan font-weight="700" fill="#5AA8DD">3</tspan>-day current streak
+    <tspan fill="#14345A">  ·  </tspan>
+    longest <tspan font-weight="700" fill="#5AA8DD">5</tspan> days
+    <tspan fill="#14345A">  ·  </tspan>
+    <tspan font-weight="700" fill="#5AA8DD">279</tspan> contributions all-time
+  </text>
+</svg>
