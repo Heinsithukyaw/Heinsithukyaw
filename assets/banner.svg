@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="Welcome to Taungoodev's GitHub — two agents exchanging messages">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="Welcome to T@ungoodev's GitHub — two agents exchanging messages">
   <style>
     /* stars breathe */
     .tw { animation: tw 4.5s ease-in-out infinite; }
@@ -306,7 +306,7 @@
   <!-- ══ title ════════════════════════════════════════════════ -->
   <g font-family="Menlo, Monaco, 'SF Mono', Consolas, 'Courier New', monospace" text-anchor="middle">
     <text x="600" y="60" font-size="14.5" letter-spacing="7.5" fill="#9cc9ea" opacity="0.95">WELCOME&#160;TO</text>
-    <text x="600" y="108" font-size="40" letter-spacing="1.2" fill="#f4faff" font-weight="600">Taungoodev&#39;s GitHub</text>
+    <text x="600" y="108" font-size="40" letter-spacing="1.2" fill="#f4faff" font-weight="600">T@ungoodev&#39;s GitHub</text>
     <text x="600" y="136" font-size="17" letter-spacing="3" fill="#74b2de">&lt;/&gt;</text>
   </g>
 

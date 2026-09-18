@@ -5,7 +5,7 @@
      ───────────────────────────────────────────────────────────── -->
 
 <div align="center">
-  <img src="./assets/banner.svg" alt="Welcome to Taungoodev's GitHub" width="100%" />
+  <img src="./assets/banner.svg" alt="Welcome to T@ungoodev's GitHub" width="100%" />
 </div>
 
 <div align="center">
@@ -109,11 +109,11 @@
 <table align="center" border="0">
   <tr>
     <td width="230" align="center" valign="middle">
-      <img src="./assets/avatar.png" width="200" alt="Taungoodev" />
+      <img src="./assets/avatar.png" width="200" alt="T@ungoodev" />
     </td>
     <td valign="middle">
       <p>
-        Hi — I'm <b>Taungoodev</b>, a software engineer who builds <b>AI agent systems</b> and the
+        Hi — I'm <b>T@ungoodev</b>, a software engineer who builds <b>AI agent systems</b> and the
         product surfaces around them. My work sits where <i>agentic automation</i> meets
         <i>real, shipped software</i>: multi-agent orchestration, tool/MCP plumbing, workflow engines,
         and the full-stack apps that make them usable.
