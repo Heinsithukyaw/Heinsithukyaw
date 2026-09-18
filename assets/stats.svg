@@ -9,22 +9,22 @@
   <rect x="80" y="50" width="374" height="1" fill="#14345A" opacity="0.7"/>
   
     <text x="26" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">279</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">283</text>
     <text x="26" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">CONTRIBUTIONS</text><line x1="123" y1="80" x2="123" y2="122"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="133" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">238</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">241</text>
     <text x="133" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">COMMITS '26</text><line x1="230" y1="80" x2="230" y2="122"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="240" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">11</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">1</text>
     <text x="240" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">PUBLIC REPOS</text><line x1="337" y1="80" x2="337" y2="122"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="347" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">20</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">3</text>
     <text x="347" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">LANGUAGES</text>
     <text x="26" y="170" font-size="23" font-weight="700" fill="#EAF4FC"

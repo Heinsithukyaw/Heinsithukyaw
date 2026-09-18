@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-18T22:24:55.683Z",
+  "generatedAt": "2026-09-18T22:33:58.674Z",
   "login": "Heinsithukyaw",
   "name": "T@ungoodev",
-  "totalContributionsAllTime": 279,
+  "totalContributionsAllTime": 283,
   "perYear": [
     {
       "year": 2026,
-      "count": 251
+      "count": 255
     },
     {
       "year": 2025,
@@ -38,48 +38,28 @@
     }
   ],
   "year": 2026,
-  "contributionsThisYear": 251,
-  "commitsThisYear": 238,
+  "contributionsThisYear": 255,
+  "commitsThisYear": 241,
   "pullRequests": 0,
   "issues": 0,
   "reviews": 0,
-  "publicRepos": 11,
+  "publicRepos": 1,
   "stars": 0,
   "followers": 0,
   "currentStreak": 3,
   "longestStreak": 5,
   "topLanguages": [
     {
-      "name": "HTML",
-      "pct": 47.52
-    },
-    {
-      "name": "TypeScript",
-      "pct": 23.88
-    },
-    {
-      "name": "PHP",
-      "pct": 11
+      "name": "JavaScript",
+      "pct": 85.45
     },
     {
       "name": "Python",
-      "pct": 6.88
+      "pct": 10.24
     },
     {
-      "name": "Go",
-      "pct": 3.85
-    },
-    {
-      "name": "JavaScript",
-      "pct": 3.26
-    },
-    {
-      "name": "Solidity",
-      "pct": 1.5
-    },
-    {
-      "name": "CSS",
-      "pct": 1.16
+      "name": "HTML",
+      "pct": 4.31
     }
   ]
 }

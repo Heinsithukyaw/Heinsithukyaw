@@ -9,54 +9,24 @@
   <rect x="80" y="50" width="374" height="1" fill="#14345A" opacity="0.7"/>
   <defs><clipPath id="barClip"><rect x="26" y="74" width="428" height="14" rx="7"/></clipPath>
   </defs>
-  <g clip-path="url(#barClip)"><rect x="26.00" y="74" width="203.41" height="14"
-     fill="#e34c26"/><rect x="229.41" y="74" width="102.19" height="14"
-     fill="#3178c6"/><rect x="331.60" y="74" width="47.08" height="14"
-     fill="#4F5D95"/><rect x="378.67" y="74" width="29.43" height="14"
-     fill="#3572A5"/><rect x="408.10" y="74" width="16.47" height="14"
-     fill="#00ADD8"/><rect x="424.57" y="74" width="13.95" height="14"
-     fill="#f1e05a"/><rect x="438.52" y="74" width="6.41" height="14"
-     fill="#AA6746"/><rect x="444.93" y="74" width="4.97" height="14"
-     fill="#663399"/></g>
+  <g clip-path="url(#barClip)"><rect x="26.00" y="74" width="365.73" height="14"
+     fill="#f1e05a"/><rect x="391.73" y="74" width="43.84" height="14"
+     fill="#3572A5"/><rect x="435.57" y="74" width="18.43" height="14"
+     fill="#e34c26"/></g>
   
-    <circle cx="31" cy="114" r="5" fill="#e34c26"/>
+    <circle cx="31" cy="114" r="5" fill="#f1e05a"/>
     <text x="44" y="118" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">HTML</text>
-    <text x="218" y="118" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">47.5%</text>
-    <circle cx="245" cy="114" r="5" fill="#3178c6"/>
-    <text x="258" y="118" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">TypeScript</text>
-    <text x="432" y="118" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">23.9%</text>
-    <circle cx="31" cy="140" r="5" fill="#4F5D95"/>
-    <text x="44" y="144" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">PHP</text>
-    <text x="218" y="144" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">11.0%</text>
-    <circle cx="245" cy="140" r="5" fill="#3572A5"/>
-    <text x="258" y="144" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Python</text>
-    <text x="432" y="144" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">6.9%</text>
-    <circle cx="31" cy="166" r="5" fill="#00ADD8"/>
-    <text x="44" y="170" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Go</text>
-    <text x="218" y="170" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">3.8%</text>
-    <circle cx="245" cy="166" r="5" fill="#f1e05a"/>
-    <text x="258" y="170" font-size="12" font-weight="600" fill="#C3D6E8"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">JavaScript</text>
-    <text x="432" y="170" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">3.3%</text>
-    <circle cx="31" cy="192" r="5" fill="#AA6746"/>
-    <text x="44" y="196" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Solidity</text>
-    <text x="218" y="196" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">1.5%</text>
-    <circle cx="245" cy="192" r="5" fill="#663399"/>
-    <text x="258" y="196" font-size="12" font-weight="600" fill="#C3D6E8"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">CSS</text>
-    <text x="432" y="196" font-size="12" font-weight="700" fill="#5AA8DD"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">1.2%</text>
+    <text x="218" y="118" font-size="12" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">85.5%</text>
+    <circle cx="245" cy="114" r="5" fill="#3572A5"/>
+    <text x="258" y="118" font-size="12" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Python</text>
+    <text x="432" y="118" font-size="12" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">10.2%</text>
+    <circle cx="31" cy="140" r="5" fill="#e34c26"/>
+    <text x="44" y="144" font-size="12" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">HTML</text>
+    <text x="218" y="144" font-size="12" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">4.3%</text>
 </svg>
