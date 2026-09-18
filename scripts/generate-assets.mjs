@@ -7,7 +7,7 @@
  *
  * Auth: GH_TOKEN / GITHUB_TOKEN env var, or falls back to `gh auth token`.
  */
-import { writeFileSync, mkdirSync } from 'node:fs';
+import { writeFileSync, readFileSync, existsSync, mkdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
@@ -55,6 +55,34 @@ async function gql(query, variables = {}) {
   return json.data;
 }
 
+// Repository data comes from REST, not GraphQL.
+// The Actions GITHUB_TOKEN is an installation token scoped to THIS repo, so
+// `user.repositories` over GraphQL would only ever see the profile repo itself
+// (publicRepos: 1). The public REST endpoints return the real list regardless
+// of token scope, so the numbers are the same locally and in CI.
+async function restGet(path) {
+  const res = await fetch(`https://api.github.com${path}`, {
+    headers: {
+      Authorization: `bearer ${TOKEN}`,
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'profile-readme-generator',
+    },
+  });
+  if (!res.ok) throw new Error(`REST ${path} -> ${res.status} ${res.statusText}`);
+  return res.json();
+}
+
+// linguist colours, since the REST API only returns the language *name*
+const LANG_COLORS = {
+  TypeScript: '#3178C6', JavaScript: '#F1E05A', Python: '#3572A5', HTML: '#E34F26',
+  CSS: '#563D7C', SCSS: '#C6538C', PHP: '#4F5D95', Blade: '#F7523F', Go: '#00ADD8',
+  'Go Template': '#00ADD8', Solidity: '#AA6746', Kotlin: '#A97BFF', 'C++': '#F34B7D',
+  C: '#555555', 'C#': '#178600', Java: '#B07219', Ruby: '#701516', Rust: '#DEA584',
+  Shell: '#89E051', PowerShell: '#012456', Dockerfile: '#384D54', Makefile: '#427819',
+  'PLpgSQL': '#336790', HCL: '#844FBA', TeX: '#3D6117', Mako: '#7E858D',
+  'Open Policy Agent': '#7D9199', Vue: '#41B883', Svelte: '#FF3E00', MDX: '#FCB32C',
+};
+
 /* ── data ──────────────────────────────────────────────────────── */
 // GitHub's contribution calendar is keyed to the profile's local timezone.
 // Comparing `new Date(date) <= now` treats dates as UTC midnight and silently
@@ -72,22 +100,6 @@ const data = await gql(
     user(login: $login) {
       name
       login
-      followers { totalCount }
-      repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
-        totalCount
-        nodes {
-          name
-          description
-          url
-          pushedAt
-          stargazerCount
-          forkCount
-          primaryLanguage { name color }
-          languages(first: 12, orderBy: { field: SIZE, direction: DESC }) {
-            edges { size node { name color } }
-          }
-        }
-      }
       contributionsCollection(from: $from, to: $to) {
         totalCommitContributions
         totalPullRequestContributions
@@ -105,8 +117,38 @@ const data = await gql(
   { login: LOGIN, from, to }
 );
 
-const user = data.user;
-const cc = user.contributionsCollection;
+const cc = data.user.contributionsCollection;
+
+// ── profile + repositories over REST ────────────────────────────
+const profile = await restGet(`/users/${LOGIN}`);
+const rawRepos = await restGet(`/users/${LOGIN}/repos?per_page=100&type=owner&sort=updated`);
+
+const repos = [];
+for (const r of rawRepos) {
+  if (r.fork) continue;
+  let langs = {};
+  try {
+    langs = await restGet(`/repos/${LOGIN}/${r.name}/languages`);
+  } catch {
+    /* empty repo, or languages unavailable */
+  }
+  repos.push({
+    name: r.name,
+    description: r.description,
+    url: r.html_url,
+    pushedAt: r.pushed_at,
+    stargazerCount: r.stargazers_count,
+    forkCount: r.forks_count,
+    primaryLanguage: r.language
+      ? { name: r.language, color: LANG_COLORS[r.language] ?? C.accent }
+      : null,
+    languages: Object.entries(langs).map(([name, size]) => ({
+      name,
+      size,
+      color: LANG_COLORS[name] ?? C.accent,
+    })),
+  });
+}
 
 // all-time contributions: sum each contribution year
 const years = cc.contributionYears ?? [YEAR];
@@ -131,22 +173,55 @@ const days = cc.contributionCalendar.weeks
   .filter((d) => d.date <= todayISO)
   .sort((a, b) => a.date.localeCompare(b.date));
 
-const stars = user.repositories.nodes.reduce((s, r) => s + r.stargazerCount, 0);
+const stars = repos.reduce((s, r) => s + r.stargazerCount, 0);
 
 // language bytes across own repos
 const langBytes = new Map();
-for (const repo of user.repositories.nodes) {
-  for (const e of repo.languages.edges) {
-    const cur = langBytes.get(e.node.name) ?? { size: 0, color: e.node.color };
-    cur.size += e.size;
-    langBytes.set(e.node.name, cur);
+for (const repo of repos) {
+  for (const l of repo.languages) {
+    const cur = langBytes.get(l.name) ?? { size: 0, color: l.color };
+    cur.size += l.size;
+    langBytes.set(l.name, cur);
   }
 }
 const totalBytes = [...langBytes.values()].reduce((s, v) => s + v.size, 0) || 1;
-const langs = [...langBytes.entries()]
-  .map(([name, v]) => ({ name, pct: (v.size / totalBytes) * 100, color: v.color || C.accent }))
-  .sort((a, b) => b.pct - a.pct)
-  .slice(0, 8);
+
+// The breakdown itself prefers the committed local snapshot
+// (scripts/languages.json, built by measure-languages.mjs). The public API can
+// only see public repos, and every one of this profile's own repos is private —
+// so an API-derived mix would describe *fork* code, not the work on display.
+// The snapshot also excludes markup/data formats (JSON, Markdown, YAML) that
+// would otherwise dominate a byte-count and say nothing about the code written.
+const CODE_LANGS = new Set([
+  'TypeScript', 'JavaScript', 'Python', 'Go', 'Rust', 'Java', 'Kotlin', 'Ruby',
+  'PHP', 'C#', 'Swift', 'C', 'C++', 'Shell', 'SQL', 'SCSS', 'CSS', 'Vue',
+  'Svelte', 'Dart', 'Elixir', 'Scala', 'Perl', 'Lua', 'R', 'Objective-C',
+]);
+
+const snapshotPath = join(ROOT, 'scripts/languages.json');
+const snapshot = existsSync(snapshotPath)
+  ? JSON.parse(readFileSync(snapshotPath, 'utf8'))
+  : null;
+
+let langs;
+let ownProjectCount = repos.length;
+if (snapshot) {
+  ownProjectCount = snapshot.projectsScanned;
+  const code = snapshot.languages.filter((l) => CODE_LANGS.has(l.name));
+  const sum = code.reduce((s, l) => s + l.size, 0) || 1;
+  langs = code
+    .map((l) => ({ name: l.name, pct: (l.size / sum) * 100, color: LANG_COLORS[l.name] ?? C.accent }))
+    .sort((a, b) => b.pct - a.pct)
+    .slice(0, 6);
+} else {
+  langs = [...langBytes.entries()]
+    .map(([name, v]) => ({ name, pct: (v.size / totalBytes) * 100, color: v.color || C.accent }))
+    .sort((a, b) => b.pct - a.pct)
+    .slice(0, 8);
+}
+const langCount = snapshot
+  ? snapshot.languages.filter((l) => CODE_LANGS.has(l.name)).length
+  : langBytes.size;
 
 // streaks — longest, and the one still running
 let longest = 0, longestStart = null, longestEnd = null;
@@ -211,16 +286,20 @@ const candidates = [
   { v: cc.totalIssueContributions, l: 'ISSUES OPENED' },
   { v: cc.totalPullRequestReviewContributions, l: 'REVIEWS' },
   { v: stars, l: 'STARS EARNED' },
-  { v: user.followers.totalCount, l: 'FOLLOWERS' },
-  { v: user.repositories.totalCount, l: 'PUBLIC REPOS' },
-  { v: langBytes.size, l: 'LANGUAGES' },
+  { v: profile.followers, l: 'FOLLOWERS' },
+  { v: ownProjectCount, l: 'PROJECTS' },
+  { v: langCount, l: 'LANGUAGES' },
   { v: years.length, l: 'ACTIVE YEARS' },
   { v: longest, l: 'LONGEST STREAK' },
   { v: cur, l: 'CURRENT STREAK' },
-  { v: Math.min(...years), l: 'ACTIVE SINCE' },
+  { v: Math.min(...years), l: 'ON GITHUB SINCE', raw: true },
 ];
 
-const tiles = candidates.filter((t) => t.v > 0).slice(0, 8).map((t) => ({ ...t, v: nf.format(t.v) }));
+// `raw` opts a tile out of thousands-grouping — a year must not render "2,019".
+const tiles = candidates
+  .filter((t) => t.v > 0)
+  .slice(0, 8)
+  .map((t) => ({ ...t, v: t.raw ? String(t.v) : nf.format(t.v) }));
 const ROWS = Math.max(1, Math.ceil(tiles.length / COLS));
 const STATS_H = 74 + ROWS * 66 + 16;
 
@@ -282,12 +361,14 @@ langs.forEach((l, i) => {
 });
 
 const langsSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${LANG_W}" height="${LANG_H}"
-     viewBox="0 0 ${LANG_W} ${LANG_H}" role="img" aria-label="Most used languages for ${esc(LOGIN)}">
+     viewBox="0 0 ${LANG_W} ${LANG_H}" role="img" aria-label="Primary languages for ${esc(LOGIN)}">
   ${panel(LANG_W, LANG_H)}
-  ${heading(LANG_W, 'Most Used Languages')}
+  ${heading(LANG_W, 'Primary Languages')}
   <defs>${segs.slice(0, segs.indexOf('<g clip-path'))}</defs>
   ${segs.slice(segs.indexOf('<g clip-path'))}
   ${legend}
+  <text x="${barX}" y="${LANG_H - 14}" font-size="10" fill="${C.label}" font-family="${FONT}"
+        >share of source in my own projects${snapshot ? ` · ${snapshot.generatedAt}` : ''}</text>
 </svg>`;
 
 /* ── activity.svg ──────────────────────────────────────────────── */
@@ -377,14 +458,30 @@ const actSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${ACT_W}" height=
 </svg>`;
 
 /* ── projects.svg ──────────────────────────────────────────────── */
-const FEATURED = ['Callme.ai', 'DailyNews', 'PIG', 'AgentOS'];
+// The featured list is curated locally (scripts/featured.json) rather than
+// derived from the API. Most of these repos are private, and a private repo is
+// invisible to the public /users/:login/repos endpoint — which previously left
+// this card rendering empty for every logged-out visitor. Curating locally also
+// lets the card show real descriptions instead of "No description yet."
+const FEATURED = JSON.parse(readFileSync(join(ROOT, 'scripts/featured.json'), 'utf8'));
 
-const PROJ_W = 880, PROJ_H = 268;
-const cardGap = 18;
-const cardW = (PROJ_W - 26 * 2 - cardGap) / 2;
-const cardH = 86;
+const PROJ_W = 880;
+const PAD = 26;
+const GAP = 16;
+const innerW = PROJ_W - PAD * 2;
+const pColW = (innerW - GAP) / 2;
+const FLAG_H = 104;
+const SM_H = 88;
+const Y0 = 66;
 
-const byName = new Map(user.repositories.nodes.map((r) => [r.name, r]));
+const FLAG = FEATURED.find((f) => f.flagship) ?? FEATURED[0];
+const OTHERS = FEATURED.filter((f) => f !== FLAG);
+const gridTop = Y0 + FLAG_H + GAP;
+const gridRows = Math.ceil((OTHERS.length + 1) / 2); // +1 = the "all repos" cell
+const PROJ_H = gridTop + gridRows * SM_H + (gridRows - 1) * GAP + 24;
+
+// Public repos, if any — used only to enrich a card with live stars/forks.
+const byName = new Map(repos.map((r) => [r.name, r]));
 
 function truncate(s, n) {
   const t = (s || '').trim();
@@ -402,51 +499,188 @@ function relTime(iso) {
   return `${Math.round(d / 365)}y ago`;
 }
 
-// Optional per-repo description overrides, used when a repo has none on GitHub.
-// Fill these in (or set real descriptions on the repos — better for SEO anyway).
-const DESCRIPTIONS = {
-  // 'AgentOS': 'Agent orchestration runtime',
-};
+/* Ambient motion lives in CSS so `prefers-reduced-motion` can switch it off.
+   The one-shot entrance / bar-grow is SMIL, which has no CSS equivalent for
+   geometry attributes. */
+const PROJ_CSS = `
+  .pj-aurora{animation:pjDrift 18s ease-in-out infinite}
+  .pj-shimmer{animation:pjSweep 8s linear infinite;animation-delay:1.6s}
+  .pj-glow{animation:pjGlow 5.5s ease-in-out infinite}
+  .pj-arrow{animation:pjArrow 2.6s ease-in-out infinite}
+  .pj-p0{animation:pjPill 5.2s ease-in-out infinite}
+  .pj-p1{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-1.3s}
+  .pj-p2{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-2.6s}
+  .pj-p3{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-3.9s}
+  @keyframes pjDrift{0%,100%{transform:translateX(-90px)}50%{transform:translateX(70px)}}
+  @keyframes pjSweep{0%{transform:translateX(-320px)}100%{transform:translateX(1220px)}}
+  @keyframes pjGlow{0%,100%{opacity:.18}50%{opacity:.6}}
+  @keyframes pjPill{0%,100%{opacity:.42}50%{opacity:1}}
+  @keyframes pjArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+  @media (prefers-reduced-motion:reduce){
+    .pj-aurora,.pj-shimmer,.pj-glow,.pj-arrow,.pj-p0,.pj-p1,.pj-p2,.pj-p3{animation:none}
+  }`;
+
+const PROJ_DEFS = `
+  <style>${PROJ_CSS}</style>
+  <linearGradient id="pjCard" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#102741"/><stop offset="1" stop-color="#0B1B2E"/>
+  </linearGradient>
+  <linearGradient id="pjFlag" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#13324F"/><stop offset="0.6" stop-color="#0E2440"/>
+    <stop offset="1" stop-color="#0B1B2E"/>
+  </linearGradient>
+  <radialGradient id="pjAurora" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#2F7AB8" stop-opacity="0.6"/>
+    <stop offset="0.55" stop-color="#2F7AB8" stop-opacity="0.18"/>
+    <stop offset="1" stop-color="#2F7AB8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="pjShimmer" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#9FD4F5" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#9FD4F5" stop-opacity="0.15"/>
+    <stop offset="1" stop-color="#9FD4F5" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="pjDots" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#2F7AB8" opacity="0.5"/>
+  </pattern>
+  <clipPath id="pjFlagClip">
+    <rect x="${PAD}" y="${Y0}" width="${innerW}" height="${FLAG_H}" rx="12"/>
+  </clipPath>`;
+
+// NOTE: every animation below is *additive* — the card renders fully visible
+// with no animation running at all. Nothing gates visibility on an animation,
+// because a failed animation would otherwise leave the section blank on the
+// live profile.
+
+/* ── flagship hero ──────────────────────────────────────────────── */
+const flagX = PAD, flagY = Y0;
+let pillX = flagX + 24;
+let pills = '';
+(FLAG.surfaces ?? []).forEach((s, i) => {
+  const w = 22 + s.length * 6.4;
+  pills += `
+      <g class="pj-p${i}">
+        <rect x="${pillX.toFixed(1)}" y="${flagY + 66}" width="${w.toFixed(1)}" height="20" rx="10"
+              fill="${C.accent}" fill-opacity="0.2" stroke="${C.stroke}" stroke-opacity="0.75"/>
+        <text x="${(pillX + w / 2).toFixed(1)}" y="${flagY + 79.6}" font-size="10" font-weight="600"
+              fill="${C.bright}" font-family="${FONT}" text-anchor="middle"
+              letter-spacing="0.6">${esc(s)}</text>
+      </g>`;
+  pillX += w + 8;
+});
+
+const flagDot = FLAG.color ?? C.accent;
+const flagSvg = `
+  <g>
+    <rect x="${flagX}" y="${flagY}" width="${innerW}" height="${FLAG_H}" rx="12"
+          fill="none" stroke="${C.accent}" stroke-width="1.2" class="pj-glow"/>
+    <rect x="${flagX}" y="${flagY}" width="${innerW}" height="${FLAG_H}" rx="12"
+          fill="url(#pjFlag)" stroke="${C.stroke}" stroke-opacity="0.9"/>
+    <g clip-path="url(#pjFlagClip)">
+      <ellipse cx="${(flagX + innerW * 0.68).toFixed(0)}" cy="${flagY + FLAG_H / 2}" rx="300" ry="88"
+               fill="url(#pjAurora)" class="pj-aurora"/>
+      <rect x="${flagX}" y="${flagY}" width="${innerW}" height="${FLAG_H}"
+            fill="url(#pjDots)" opacity="0.45"/>
+      <rect x="${flagX}" y="${flagY}" width="170" height="${FLAG_H}"
+            fill="url(#pjShimmer)" class="pj-shimmer"/>
+    </g>
+    <rect x="${flagX}" y="${flagY}" width="3" height="${FLAG_H}" rx="1.5" fill="${C.bright}"/>
+    <rect x="${flagX + 12}" y="${flagY + 1}" width="${innerW - 24}" height="1"
+          fill="${C.bright}" opacity="0.28"/>
+    <text x="${flagX + 24}" y="${flagY + 34}" font-size="19" font-weight="700" fill="${C.value}"
+          font-family="${FONT}">${esc(FLAG.name)}</text>
+    <rect x="${flagX + innerW - 90}" y="${flagY + 18}" width="66" height="18" rx="9"
+          fill="${C.accent}" fill-opacity="0.24" stroke="${C.stroke}" stroke-opacity="0.85"/>
+    <text x="${flagX + innerW - 57}" y="${flagY + 30.6}" font-size="9.5" font-weight="700"
+          fill="${C.bright}" font-family="${FONT}" text-anchor="middle"
+          letter-spacing="0.9">FLAGSHIP</text>
+    <text x="${flagX + 24}" y="${flagY + 55}" font-size="11.5" fill="#93AEC6"
+          font-family="${FONT}">${esc(truncate(FLAG.description, 76))}</text>
+    ${pills}
+    <circle cx="${flagX + innerW - 24}" cy="${flagY + 79}" r="4.5" fill="${flagDot}"/>
+    <circle cx="${flagX + innerW - 24}" cy="${flagY + 79}" r="4.5" fill="none" stroke="${flagDot}"
+            opacity="0.45">
+      <animate attributeName="r" values="4.5;12" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="${flagX + innerW - 36}" y="${flagY + 82.5}" font-size="10.5" font-weight="600"
+          fill="${C.text}" font-family="${FONT}" text-anchor="end">${esc(FLAG.language)}</text>
+  </g>`;
+
+/* ── small cards + the "all repos" cell ─────────────────────────── */
+const cells = OTHERS.map((f) => ({ kind: 'repo', f }));
+cells.push({ kind: 'cta' });
 
 let cards = '';
-FEATURED.forEach((name, i) => {
-  const r = byName.get(name);
-  if (!r) return;
+cells.forEach((cell, i) => {
   const col = i % 2, row = Math.floor(i / 2);
-  const x = 26 + col * (cardW + cardGap);
-  const y = 74 + row * (cardH + 18);
-  const lang = r.primaryLanguage?.name ?? '—';
-  const dot = r.primaryLanguage?.color ?? C.accent;
+  const x = PAD + col * (pColW + GAP);
+  const y = gridTop + row * (SM_H + GAP);
+  const delay = 0.18 + i * 0.07;
+
+  if (cell.kind === 'cta') {
+    cards += `
+  <g>
+    <rect x="${x}" y="${y}" width="${pColW}" height="${SM_H}" rx="11"
+          fill="none" stroke="${C.stroke}" stroke-opacity="0.7" stroke-dasharray="5 5"/>
+    <text x="${x + pColW / 2}" y="${y + 38}" font-size="13" font-weight="700" fill="${C.title}"
+          font-family="${FONT}" text-anchor="middle">All repositories</text>
+    <g class="pj-arrow">
+      <text x="${x + pColW / 2}" y="${y + 62}" font-size="11.5" fill="${C.label}"
+            font-family="${FONT}" text-anchor="middle">see everything I'm building  →</text>
+    </g>
+  </g>`;
+    return;
+  }
+
+  const { f } = cell;
+  const r = byName.get(f.name); // undefined when the repo is private
+  const lang = f.language ?? r?.primaryLanguage?.name ?? '—';
+  const dot = f.color ?? r?.primaryLanguage?.color ?? C.accent;
   const stats = [
-    r.stargazerCount > 0 ? `★ ${nf.format(r.stargazerCount)}` : null,
-    r.forkCount > 0 ? `${nf.format(r.forkCount)} forks` : null,
+    r?.stargazerCount > 0 ? `★ ${nf.format(r.stargazerCount)}` : null,
+    r?.forkCount > 0 ? `${nf.format(r.forkCount)} forks` : null,
   ].filter(Boolean);
+  const meta = stats.length
+    ? `
+    <text x="${x + pColW - 16}" y="${y + 28}" font-size="11" font-weight="600" fill="${C.bright}"
+          font-family="${FONT}" text-anchor="end">${esc(stats.join('  ·  '))}</text>`
+    : r?.pushedAt
+      ? `
+    <text x="${x + pColW - 16}" y="${y + 74.5}" font-size="10.5" fill="${C.label}"
+          font-family="${FONT}" text-anchor="end">${esc(relTime(r.pushedAt))}</text>`
+      : '';
 
   cards += `
   <g>
-    <rect x="${x}" y="${y}" width="${cardW}" height="${cardH}" rx="9"
-          fill="${C.bgSoft}" stroke="${C.grid}" stroke-opacity="0.9"/>
-    <rect x="${x}" y="${y}" width="3" height="${cardH}" rx="1.5" fill="${C.accent}" opacity="0.85"/>
-    <text x="${x + 18}" y="${y + 26}" font-size="14" font-weight="700" fill="${C.title}"
-          font-family="${FONT}">${esc(r.name)}</text>
-    ${stats.length
-      ? `<text x="${x + cardW - 16}" y="${y + 26}" font-size="11.5" font-weight="600" fill="${C.bright}"
-          font-family="${FONT}" text-anchor="end">${esc(stats.join('  ·  '))}</text>`
-      : ''}
-    <text x="${x + 18}" y="${y + 48}" font-size="10.5" fill="${C.label}"
-          font-family="${FONT}">${esc(truncate(DESCRIPTIONS[r.name] ?? r.description, 58))}</text>
-    <circle cx="${x + 23}" cy="${y + 68}" r="4.5" fill="${dot}"/>
-    <text x="${x + 34}" y="${y + 71.5}" font-size="10.5" font-weight="600" fill="${C.text}"
+    <rect x="${x}" y="${y}" width="${pColW}" height="${SM_H}" rx="11"
+          fill="url(#pjCard)" stroke="${C.grid}" stroke-opacity="0.95"/>
+    <rect x="${x}" y="${y}" width="3" height="${SM_H}" rx="1.5" fill="${C.accent}"/>
+    <rect x="${x + 12}" y="${y + 1}" width="${pColW - 24}" height="1"
+          fill="${C.bright}" opacity="0.16"/>
+    <text x="${x + 18}" y="${y + 28}" font-size="14" font-weight="700" fill="${C.title}"
+          font-family="${FONT}">${esc(f.name)}</text>
+    ${meta}
+    <text x="${x + 18}" y="${y + 50}" font-size="10.5" fill="${C.label}"
+          font-family="${FONT}">${esc(truncate(f.description ?? r?.description, 56))}</text>
+    <circle cx="${x + 23}" cy="${y + 71}" r="4.5" fill="${dot}"/>
+    <circle cx="${x + 23}" cy="${y + 71}" r="4.5" fill="none" stroke="${dot}" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="${(delay + 0.4).toFixed(2)}s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="${(delay + 0.4).toFixed(2)}s" repeatCount="indefinite"/>
+    </circle>
+    <text x="${x + 34}" y="${y + 74.5}" font-size="10.5" font-weight="600" fill="${C.text}"
           font-family="${FONT}">${esc(lang)}</text>
-    <text x="${x + cardW - 16}" y="${y + 71.5}" font-size="10.5" fill="${C.label}"
-          font-family="${FONT}" text-anchor="end">updated ${esc(relTime(r.pushedAt))}</text>
   </g>`;
 });
 
 const projectsSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="${PROJ_W}" height="${PROJ_H}"
      viewBox="0 0 ${PROJ_W} ${PROJ_H}" role="img" aria-label="Featured projects by ${esc(LOGIN)}">
+  <title>Featured projects by ${esc(LOGIN)}</title>
+  <defs>${PROJ_DEFS}</defs>
   ${panel(PROJ_W, PROJ_H)}
   ${heading(PROJ_W, 'Featured Projects')}
+  ${flagSvg}
   ${cards}
 </svg>`;
 
@@ -507,7 +741,7 @@ writeFileSync(
     {
       generatedAt: new Date().toISOString(),
       login: LOGIN,
-      name: user.name,
+      name: profile.name,
       totalContributionsAllTime: totalAllTime,
       perYear,
       year: YEAR,
@@ -516,9 +750,9 @@ writeFileSync(
       pullRequests: cc.totalPullRequestContributions,
       issues: cc.totalIssueContributions,
       reviews: cc.totalPullRequestReviewContributions,
-      publicRepos: user.repositories.totalCount,
+      publicRepos: repos.length,
       stars,
-      followers: user.followers.totalCount,
+      followers: profile.followers,
       currentStreak: cur,
       longestStreak: longest,
       topLanguages: langs.map((l) => ({ name: l.name, pct: +l.pct.toFixed(2) })),

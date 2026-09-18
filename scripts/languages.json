@@ -1,0 +1,234 @@
+{
+  "generatedAt": "2026-09-18",
+  "source": "local working copies (private repos are invisible to the public API)",
+  "projectsScanned": 11,
+  "totalBytes": 361287486,
+  "languages": [
+    {
+      "name": "Python",
+      "size": 97398497,
+      "files": 6249,
+      "pct": 27
+    },
+    {
+      "name": "JSON",
+      "size": 95704033,
+      "files": 2366,
+      "pct": 26.5
+    },
+    {
+      "name": "HTML",
+      "size": 54450676,
+      "files": 121,
+      "pct": 15.1
+    },
+    {
+      "name": "Markdown",
+      "size": 45910104,
+      "files": 3770,
+      "pct": 12.7
+    },
+    {
+      "name": "TypeScript",
+      "size": 38294343,
+      "files": 4905,
+      "pct": 10.6
+    },
+    {
+      "name": "JavaScript",
+      "size": 19313634,
+      "files": 610,
+      "pct": 5.3
+    },
+    {
+      "name": "Go",
+      "size": 4863169,
+      "files": 447,
+      "pct": 1.3
+    },
+    {
+      "name": "YAML",
+      "size": 2243071,
+      "files": 319,
+      "pct": 0.6
+    },
+    {
+      "name": "CSS",
+      "size": 1558905,
+      "files": 100,
+      "pct": 0.4
+    },
+    {
+      "name": "Shell",
+      "size": 955792,
+      "files": 148,
+      "pct": 0.3
+    },
+    {
+      "name": "SQL",
+      "size": 367477,
+      "files": 90,
+      "pct": 0.1
+    },
+    {
+      "name": "Rust",
+      "size": 173394,
+      "files": 10,
+      "pct": 0
+    },
+    {
+      "name": "TOML",
+      "size": 43113,
+      "files": 11,
+      "pct": 0
+    },
+    {
+      "name": "C",
+      "size": 9634,
+      "files": 1,
+      "pct": 0
+    },
+    {
+      "name": "Kotlin",
+      "size": 1634,
+      "files": 2,
+      "pct": 0
+    },
+    {
+      "name": "C++",
+      "size": 10,
+      "files": 1,
+      "pct": 0
+    }
+  ],
+  "perProject": {
+    "Ominibridge": {
+      "Markdown": 34675902,
+      "TypeScript": 27357966,
+      "JavaScript": 18201880,
+      "YAML": 722138,
+      "JSON": 49118564,
+      "Python": 71616833,
+      "HTML": 44816647,
+      "CSS": 1088873,
+      "TOML": 32766,
+      "Rust": 173394,
+      "C++": 10,
+      "Shell": 531519,
+      "C": 9634,
+      "SQL": 2370
+    },
+    "Callme-ai": {
+      "Markdown": 1715990,
+      "HTML": 677262,
+      "YAML": 186804,
+      "JavaScript": 484869,
+      "JSON": 31697,
+      "Shell": 3713,
+      "Python": 382060,
+      "TypeScript": 2135105,
+      "TOML": 862,
+      "CSS": 247993
+    },
+    "DailyNews": {
+      "Markdown": 771030,
+      "JSON": 208412,
+      "YAML": 253010,
+      "JavaScript": 399626,
+      "TypeScript": 1775084,
+      "CSS": 16461,
+      "Shell": 41396,
+      "SQL": 104944,
+      "Python": 149086
+    },
+    "Veridra": {
+      "Markdown": 393731,
+      "JSON": 84183,
+      "TypeScript": 1485821,
+      "CSS": 77465,
+      "JavaScript": 9364,
+      "SQL": 54625,
+      "HTML": 821441,
+      "YAML": 228064,
+      "Shell": 810,
+      "TOML": 539,
+      "Python": 49608
+    },
+    "Guru": {
+      "Markdown": 3489158,
+      "HTML": 720197,
+      "JSON": 325367,
+      "Python": 4715433,
+      "Shell": 147012,
+      "YAML": 51479,
+      "TOML": 2068,
+      "TypeScript": 700228,
+      "SQL": 4611,
+      "JavaScript": 11717,
+      "CSS": 104237
+    },
+    "Organizational Agent OS": {
+      "YAML": 759115,
+      "Markdown": 1821656,
+      "Python": 3839904,
+      "JSON": 17132040,
+      "Shell": 190982,
+      "TypeScript": 2756253,
+      "JavaScript": 130687,
+      "CSS": 4559,
+      "Go": 4863169,
+      "HTML": 5747185,
+      "SQL": 193862
+    },
+    "Private Investment Gateway Project": {
+      "Markdown": 314002,
+      "JavaScript": 42305,
+      "SQL": 7065,
+      "YAML": 10025,
+      "JSON": 943050,
+      "Shell": 22253,
+      "TypeScript": 2011284,
+      "HTML": 1556814,
+      "CSS": 9637,
+      "Kotlin": 1634
+    },
+    "REVO CORE": {
+      "Markdown": 286474,
+      "Python": 2330499,
+      "JSON": 7697228,
+      "YAML": 2533,
+      "JavaScript": 16132,
+      "HTML": 8567,
+      "CSS": 5731,
+      "TOML": 3154,
+      "Shell": 14073,
+      "TypeScript": 15248
+    },
+    "ReVoLab-AGI": {
+      "Markdown": 1983022,
+      "Python": 12089186,
+      "JSON": 20002945,
+      "CSS": 3926,
+      "JavaScript": 17054,
+      "HTML": 63518,
+      "YAML": 26487,
+      "Shell": 4034
+    },
+    "A-Book": {
+      "Markdown": 431551,
+      "HTML": 38748,
+      "Python": 2152311,
+      "TOML": 3724,
+      "JSON": 95204,
+      "YAML": 3416
+    },
+    "EzRecovery": {
+      "Markdown": 27588,
+      "Python": 73577,
+      "JSON": 65343,
+      "HTML": 297,
+      "TypeScript": 57354,
+      "CSS": 23
+    }
+  }
+}

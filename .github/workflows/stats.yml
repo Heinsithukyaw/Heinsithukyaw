@@ -1,8 +1,13 @@
 name: Refresh profile assets
 
-# Regenerates assets/stats.svg, langs.svg, activity.svg and projects.svg
-# straight from the GitHub API, then commits them back to main.
+# Regenerates assets/stats.svg, langs.svg, activity.svg, streak.svg and
+# projects.svg, then commits them back to main.
 # No third-party card service is involved, so nothing can go 503 on us.
+#
+# Contribution/streak data comes from the GitHub API. The language mix and the
+# featured list come from committed snapshots (scripts/languages.json,
+# scripts/featured.json) because every one of the owner's own repos is private
+# and therefore invisible to the public API.
 
 on:
   schedule:
@@ -12,6 +17,8 @@ on:
     branches: [main]
     paths:
       - 'scripts/generate-assets.mjs'
+      - 'scripts/featured.json'
+      - 'scripts/languages.json'
       - '.github/workflows/stats.yml'
 
 permissions:

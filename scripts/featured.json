@@ -1,0 +1,40 @@
+[
+  {
+    "name": "Ominibridge",
+    "description": "One API configuration becomes four governed integration surfaces",
+    "language": "TypeScript",
+    "color": "#3178C6",
+    "flagship": true,
+    "surfaces": ["MCP", "A2A", "OpenAPI", "REST"]
+  },
+  {
+    "name": "Callme.ai",
+    "description": "Burmese-speaking AI voice agents — multi-tenant SaaS",
+    "language": "Python",
+    "color": "#3572A5"
+  },
+  {
+    "name": "DailyNews",
+    "description": "RSS ingestion → ranked feeds → Next.js web app",
+    "language": "TypeScript",
+    "color": "#3178C6"
+  },
+  {
+    "name": "Veridra",
+    "description": "Briefs into structured, reviewable content artifacts",
+    "language": "TypeScript",
+    "color": "#3178C6"
+  },
+  {
+    "name": "PIG",
+    "description": "Private investment gateway — deal flow and documents",
+    "language": "TypeScript",
+    "color": "#3178C6"
+  },
+  {
+    "name": "AgentOS",
+    "description": "Agent orchestration runtime for multi-agent workflows",
+    "language": "Python",
+    "color": "#3572A5"
+  }
+]

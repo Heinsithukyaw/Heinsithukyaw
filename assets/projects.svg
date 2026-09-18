@@ -1,6 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="880" height="268"
-     viewBox="0 0 880 268" role="img" aria-label="Featured projects by Heinsithukyaw">
-  <rect x="0.5" y="0.5" width="879" height="267" rx="12"
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="506"
+     viewBox="0 0 880 506" role="img" aria-label="Featured projects by Heinsithukyaw">
+  <title>Featured projects by Heinsithukyaw</title>
+  <defs>
+  <style>
+  .pj-aurora{animation:pjDrift 18s ease-in-out infinite}
+  .pj-shimmer{animation:pjSweep 8s linear infinite;animation-delay:1.6s}
+  .pj-glow{animation:pjGlow 5.5s ease-in-out infinite}
+  .pj-arrow{animation:pjArrow 2.6s ease-in-out infinite}
+  .pj-p0{animation:pjPill 5.2s ease-in-out infinite}
+  .pj-p1{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-1.3s}
+  .pj-p2{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-2.6s}
+  .pj-p3{animation:pjPill 5.2s ease-in-out infinite;animation-delay:-3.9s}
+  @keyframes pjDrift{0%,100%{transform:translateX(-90px)}50%{transform:translateX(70px)}}
+  @keyframes pjSweep{0%{transform:translateX(-320px)}100%{transform:translateX(1220px)}}
+  @keyframes pjGlow{0%,100%{opacity:.18}50%{opacity:.6}}
+  @keyframes pjPill{0%,100%{opacity:.42}50%{opacity:1}}
+  @keyframes pjArrow{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+  @media (prefers-reduced-motion:reduce){
+    .pj-aurora,.pj-shimmer,.pj-glow,.pj-arrow,.pj-p0,.pj-p1,.pj-p2,.pj-p3{animation:none}
+  }</style>
+  <linearGradient id="pjCard" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#102741"/><stop offset="1" stop-color="#0B1B2E"/>
+  </linearGradient>
+  <linearGradient id="pjFlag" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#13324F"/><stop offset="0.6" stop-color="#0E2440"/>
+    <stop offset="1" stop-color="#0B1B2E"/>
+  </linearGradient>
+  <radialGradient id="pjAurora" cx="0.5" cy="0.5" r="0.5">
+    <stop offset="0" stop-color="#2F7AB8" stop-opacity="0.6"/>
+    <stop offset="0.55" stop-color="#2F7AB8" stop-opacity="0.18"/>
+    <stop offset="1" stop-color="#2F7AB8" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="pjShimmer" x1="0" y1="0" x2="1" y2="0">
+    <stop offset="0" stop-color="#9FD4F5" stop-opacity="0"/>
+    <stop offset="0.5" stop-color="#9FD4F5" stop-opacity="0.15"/>
+    <stop offset="1" stop-color="#9FD4F5" stop-opacity="0"/>
+  </linearGradient>
+  <pattern id="pjDots" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="1" cy="1" r="1" fill="#2F7AB8" opacity="0.5"/>
+  </pattern>
+  <clipPath id="pjFlagClip">
+    <rect x="26" y="66" width="828" height="104" rx="12"/>
+  </clipPath></defs>
+  <rect x="0.5" y="0.5" width="879" height="505" rx="12"
       fill="#0A1929" stroke="#1D4F7D" stroke-opacity="0.85"/>
   
   <text x="26" y="38" font-size="14.5" font-weight="700" fill="#5AA8DD"
@@ -8,4 +50,183 @@
   <rect x="26" y="50" width="54" height="2" rx="1" fill="#2F7AB8"/>
   <rect x="80" y="50" width="774" height="1" fill="#14345A" opacity="0.7"/>
   
+  <g>
+    <rect x="26" y="66" width="828" height="104" rx="12"
+          fill="none" stroke="#2F7AB8" stroke-width="1.2" class="pj-glow"/>
+    <rect x="26" y="66" width="828" height="104" rx="12"
+          fill="url(#pjFlag)" stroke="#1D4F7D" stroke-opacity="0.9"/>
+    <g clip-path="url(#pjFlagClip)">
+      <ellipse cx="589" cy="118" rx="300" ry="88"
+               fill="url(#pjAurora)" class="pj-aurora"/>
+      <rect x="26" y="66" width="828" height="104"
+            fill="url(#pjDots)" opacity="0.45"/>
+      <rect x="26" y="66" width="170" height="104"
+            fill="url(#pjShimmer)" class="pj-shimmer"/>
+    </g>
+    <rect x="26" y="66" width="3" height="104" rx="1.5" fill="#9FD4F5"/>
+    <rect x="38" y="67" width="804" height="1"
+          fill="#9FD4F5" opacity="0.28"/>
+    <text x="50" y="100" font-size="19" font-weight="700" fill="#EAF4FC"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Ominibridge</text>
+    <rect x="764" y="84" width="66" height="18" rx="9"
+          fill="#2F7AB8" fill-opacity="0.24" stroke="#1D4F7D" stroke-opacity="0.85"/>
+    <text x="797" y="96.6" font-size="9.5" font-weight="700"
+          fill="#9FD4F5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle"
+          letter-spacing="0.9">FLAGSHIP</text>
+    <text x="50" y="121" font-size="11.5" fill="#93AEC6"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">One API configuration becomes four governed integration surfaces</text>
+    
+      <g class="pj-p0">
+        <rect x="50.0" y="132" width="41.2" height="20" rx="10"
+              fill="#2F7AB8" fill-opacity="0.2" stroke="#1D4F7D" stroke-opacity="0.75"/>
+        <text x="70.6" y="145.6" font-size="10" font-weight="600"
+              fill="#9FD4F5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle"
+              letter-spacing="0.6">MCP</text>
+      </g>
+      <g class="pj-p1">
+        <rect x="99.2" y="132" width="41.2" height="20" rx="10"
+              fill="#2F7AB8" fill-opacity="0.2" stroke="#1D4F7D" stroke-opacity="0.75"/>
+        <text x="119.8" y="145.6" font-size="10" font-weight="600"
+              fill="#9FD4F5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle"
+              letter-spacing="0.6">A2A</text>
+      </g>
+      <g class="pj-p2">
+        <rect x="148.4" y="132" width="66.8" height="20" rx="10"
+              fill="#2F7AB8" fill-opacity="0.2" stroke="#1D4F7D" stroke-opacity="0.75"/>
+        <text x="181.8" y="145.6" font-size="10" font-weight="600"
+              fill="#9FD4F5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle"
+              letter-spacing="0.6">OpenAPI</text>
+      </g>
+      <g class="pj-p3">
+        <rect x="223.2" y="132" width="47.6" height="20" rx="10"
+              fill="#2F7AB8" fill-opacity="0.2" stroke="#1D4F7D" stroke-opacity="0.75"/>
+        <text x="247.0" y="145.6" font-size="10" font-weight="600"
+              fill="#9FD4F5" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle"
+              letter-spacing="0.6">REST</text>
+      </g>
+    <circle cx="830" cy="145" r="4.5" fill="#3178C6"/>
+    <circle cx="830" cy="145" r="4.5" fill="none" stroke="#3178C6"
+            opacity="0.45">
+      <animate attributeName="r" values="4.5;12" dur="3.2s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.6;0" dur="3.2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="818" y="148.5" font-size="10.5" font-weight="600"
+          fill="#C3D6E8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="end">TypeScript</text>
+  </g>
+  
+  <g>
+    <rect x="26" y="186" width="406" height="88" rx="11"
+          fill="url(#pjCard)" stroke="#14345A" stroke-opacity="0.95"/>
+    <rect x="26" y="186" width="3" height="88" rx="1.5" fill="#2F7AB8"/>
+    <rect x="38" y="187" width="382" height="1"
+          fill="#9FD4F5" opacity="0.16"/>
+    <text x="44" y="214" font-size="14" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Callme.ai</text>
+    
+    <text x="44" y="236" font-size="10.5" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Burmese-speaking AI voice agents — multi-tenant SaaS</text>
+    <circle cx="49" cy="257" r="4.5" fill="#3572A5"/>
+    <circle cx="49" cy="257" r="4.5" fill="none" stroke="#3572A5" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="0.58s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="0.58s" repeatCount="indefinite"/>
+    </circle>
+    <text x="60" y="260.5" font-size="10.5" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Python</text>
+  </g>
+  <g>
+    <rect x="448" y="186" width="406" height="88" rx="11"
+          fill="url(#pjCard)" stroke="#14345A" stroke-opacity="0.95"/>
+    <rect x="448" y="186" width="3" height="88" rx="1.5" fill="#2F7AB8"/>
+    <rect x="460" y="187" width="382" height="1"
+          fill="#9FD4F5" opacity="0.16"/>
+    <text x="466" y="214" font-size="14" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">DailyNews</text>
+    
+    <text x="466" y="236" font-size="10.5" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">RSS ingestion → ranked feeds → Next.js web app</text>
+    <circle cx="471" cy="257" r="4.5" fill="#3178C6"/>
+    <circle cx="471" cy="257" r="4.5" fill="none" stroke="#3178C6" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="0.65s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="0.65s" repeatCount="indefinite"/>
+    </circle>
+    <text x="482" y="260.5" font-size="10.5" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">TypeScript</text>
+  </g>
+  <g>
+    <rect x="26" y="290" width="406" height="88" rx="11"
+          fill="url(#pjCard)" stroke="#14345A" stroke-opacity="0.95"/>
+    <rect x="26" y="290" width="3" height="88" rx="1.5" fill="#2F7AB8"/>
+    <rect x="38" y="291" width="382" height="1"
+          fill="#9FD4F5" opacity="0.16"/>
+    <text x="44" y="318" font-size="14" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Veridra</text>
+    
+    <text x="44" y="340" font-size="10.5" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Briefs into structured, reviewable content artifacts</text>
+    <circle cx="49" cy="361" r="4.5" fill="#3178C6"/>
+    <circle cx="49" cy="361" r="4.5" fill="none" stroke="#3178C6" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="0.72s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="0.72s" repeatCount="indefinite"/>
+    </circle>
+    <text x="60" y="364.5" font-size="10.5" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">TypeScript</text>
+  </g>
+  <g>
+    <rect x="448" y="290" width="406" height="88" rx="11"
+          fill="url(#pjCard)" stroke="#14345A" stroke-opacity="0.95"/>
+    <rect x="448" y="290" width="3" height="88" rx="1.5" fill="#2F7AB8"/>
+    <rect x="460" y="291" width="382" height="1"
+          fill="#9FD4F5" opacity="0.16"/>
+    <text x="466" y="318" font-size="14" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">PIG</text>
+    
+    <text x="466" y="340" font-size="10.5" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Private investment gateway — deal flow and documents</text>
+    <circle cx="471" cy="361" r="4.5" fill="#3178C6"/>
+    <circle cx="471" cy="361" r="4.5" fill="none" stroke="#3178C6" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="0.79s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="0.79s" repeatCount="indefinite"/>
+    </circle>
+    <text x="482" y="364.5" font-size="10.5" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">TypeScript</text>
+  </g>
+  <g>
+    <rect x="26" y="394" width="406" height="88" rx="11"
+          fill="url(#pjCard)" stroke="#14345A" stroke-opacity="0.95"/>
+    <rect x="26" y="394" width="3" height="88" rx="1.5" fill="#2F7AB8"/>
+    <rect x="38" y="395" width="382" height="1"
+          fill="#9FD4F5" opacity="0.16"/>
+    <text x="44" y="422" font-size="14" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">AgentOS</text>
+    
+    <text x="44" y="444" font-size="10.5" fill="#7A93AB"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Agent orchestration runtime for multi-agent workflows</text>
+    <circle cx="49" cy="465" r="4.5" fill="#3572A5"/>
+    <circle cx="49" cy="465" r="4.5" fill="none" stroke="#3572A5" opacity="0.45">
+      <animate attributeName="r" values="4.5;11" dur="3s"
+        begin="0.86s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="0.55;0" dur="3s"
+        begin="0.86s" repeatCount="indefinite"/>
+    </circle>
+    <text x="60" y="468.5" font-size="10.5" font-weight="600" fill="#C3D6E8"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">Python</text>
+  </g>
+  <g>
+    <rect x="448" y="394" width="406" height="88" rx="11"
+          fill="none" stroke="#1D4F7D" stroke-opacity="0.7" stroke-dasharray="5 5"/>
+    <text x="651" y="432" font-size="13" font-weight="700" fill="#5AA8DD"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">All repositories</text>
+    <g class="pj-arrow">
+      <text x="651" y="456" font-size="11.5" fill="#7A93AB"
+            font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">see everything I'm building  →</text>
+    </g>
+  </g>
 </svg>
