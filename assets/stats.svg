@@ -9,12 +9,12 @@
   <rect x="80" y="50" width="374" height="1" fill="#14345A" opacity="0.7"/>
   
     <text x="26" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">366</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">370</text>
     <text x="26" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">CONTRIBUTIONS</text><line x1="123" y1="80" x2="123" y2="122"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="133" y="104" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">322</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">326</text>
     <text x="133" y="124" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">COMMITS '26</text><line x1="230" y1="80" x2="230" y2="122"
       stroke="#14345A" stroke-opacity="0.55"/>
@@ -33,12 +33,12 @@
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">ACTIVE YEARS</text><line x1="123" y1="146" x2="123" y2="188"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="133" y="170" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">6</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">7</text>
     <text x="133" y="190" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">LONGEST STREAK</text><line x1="230" y1="146" x2="230" y2="188"
       stroke="#14345A" stroke-opacity="0.55"/>
     <text x="240" y="170" font-size="23" font-weight="700" fill="#EAF4FC"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">6</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif">7</text>
     <text x="240" y="190" font-size="9.5" font-weight="600" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" letter-spacing="0.7">CURRENT STREAK</text><line x1="337" y1="146" x2="337" y2="188"
       stroke="#14345A" stroke-opacity="0.55"/>
