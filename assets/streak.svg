@@ -4,23 +4,23 @@
       fill="#0A1929" stroke="#1D4F7D" stroke-opacity="0.85"/>
   
     <text x="120.7" y="76" font-size="38" font-weight="700"
-          fill="#EAF4FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">370</text>
+          fill="#EAF4FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">375</text>
     <text x="120.7" y="104" font-size="12.5" font-weight="600"
           fill="#C3D6E8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Total Contributions</text>
     <text x="120.7" y="126" font-size="11" fill="#7A93AB"
           font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Oct 7, 2019 – Present</text><line x1="240.3" y1="30" x2="240.3" y2="138"
       stroke="#14345A" stroke-opacity="0.7"/>
     <text x="360.0" y="76" font-size="38" font-weight="700"
-          fill="#5AA8DD" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">7</text>
+          fill="#5AA8DD" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">8</text>
     <text x="360.0" y="104" font-size="12.5" font-weight="600"
           fill="#5AA8DD" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Current Streak</text>
     <text x="360.0" y="126" font-size="11" fill="#7A93AB"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Sep 17 – Sep 23</text><line x1="479.7" y1="30" x2="479.7" y2="138"
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Sep 17 – Sep 24</text><line x1="479.7" y1="30" x2="479.7" y2="138"
       stroke="#14345A" stroke-opacity="0.7"/>
     <text x="599.3" y="76" font-size="38" font-weight="700"
-          fill="#EAF4FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">7</text>
+          fill="#EAF4FC" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">8</text>
     <text x="599.3" y="104" font-size="12.5" font-weight="600"
           fill="#C3D6E8" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Longest Streak</text>
     <text x="599.3" y="126" font-size="11" fill="#7A93AB"
-          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Sep 17 – Sep 23</text>
+          font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Ubuntu,'Helvetica Neue',Arial,sans-serif" text-anchor="middle">Sep 17 – Sep 24</text>
 </svg>
